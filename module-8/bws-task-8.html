@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>BWS || TASK 8 || LOKESH GHOSH</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tangerine&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            padding: 0;
+            margin: 0;
+        }
+
+        .main-cointainer {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            background-color: rgb(232, 17, 225);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        h1 {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            top: 1rem;
+            left: 4rem;
+            width: 90%;
+            font-family: 'Tangerine', cursive;
+            font-size: 2.75rem;
+        }
+
+        h2 {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            top: 1rem;
+            left: 4rem;
+            width: 90%;
+            font-family: 'Tangerine', cursive;
+            font-size: 2.75rem;
+        }
+
+        #pic {
+            position: relative;
+            top: 2.5rem;
+            left: 4rem;
+            width: 500px;
+            height: 500px;
+        }
+
+        .button {
+            position: absolute;
+            top: 5rem;
+            left: 14rem;
+            width: 10rem;
+            height: 3rem;
+            background-color: rgb(222, 16, 174);
+            text-align: center;
+            padding: 1rem 0 1rem 0;
+            border-radius: 10px;
+        }
+
+        .button:hover {
+            background-color:white;
+            color:  rgb(0, 0, 0);
+        }
+
+        .character-info {
+            font-family: 'Tangerine';
+            font-size: 40px;
+            position: relative;
+            left: 35rem;
+            top: -27.25rem;
+            width: 20rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-cointainer">
+        <h1>Pokemon World</h1>
+        <h2>Get Pokemon randomize info</h2>
+        <div id="pic"></div>
+        <div class="character-info">
+            <div id="name"></div>
+            <br>
+            <div id="height"></div>
+            <br>
+            <div id="pokeId"></div>
+            <br>
+            <div id="type"></div>
+            <button class="button">Get a New Character</button>
+        </div>
+    </div>
+    <script>
+        "use strict";
+
+        let thisButton = document.querySelector(".button");
+        let thisImage = document.createElement('img');
+
+        thisButton.addEventListener('click', (loaded) => {
+            loaded.preventDefault()
+
+            let randomNum = Math.ceil(Math.random() * 896);
+
+            fetch(`https://pokeapi.co/api/v2/pokemon/${randomNum}`)
+                .then(response => response.json())
+                .then(pokemon => {
+                    let pokeName = pokemon['name']
+                    let pokeHeight = pokemon['height']
+                    let pokeId = pokemon['id']
+                    let pokeType = pokemon['types'][0]['type']['name']
+
+                    document.getElementById('name').innerText = `Name: ${pokeName}`
+
+                    let numToStr = pokeHeight.toString();
+                    let newPokeHeight
+
+                    if (pokeHeight >= 10) {
+                        newPokeHeight = numToStr.split("")
+                        document.getElementById('height').innerText = newPokeHeight[0] + "." + newPokeHeight[1] + " m"
+                    }
+                    else {
+                        document.getElementById('height').innerText = "0." + pokeHeight + " m"
+                    }
+
+                    document.getElementById('pokeId').innerText = `ID: ${pokeId}`
+                    document.getElementById('type').innerText = `Type: ${pokeType}`
+
+                    thisImage.src = pokemon['sprites']['other']['official-artwork']['front_default']
+                    document.getElementById('pic').appendChild(thisImage)
+                }
+                )
+        }
+        )
+    </script>
+</body>
+
+</html>
