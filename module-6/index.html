@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>making-a-responsive-layout</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        #layout {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #nav {
+            flex-basis: 100%;
+            border-bottom: 2px solid black;
+            padding: 20px;
+        }
+
+        #sidebar {
+            flex-basis: 20%;
+            padding: 20px;
+            border-right: 2px solid black;
+            border-bottom: 2px solid black;
+        }
+
+        #containt {
+            flex-basis: 80%;
+            padding: 20px;
+            border-bottom: 2px solid black;
+        }
+
+        @media (max-width: 640px) {
+            #sidebar {
+                flex-basis: 100%;
+            }
+
+            #containt {
+                flex-basis: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #sidebar {
+                display: none;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="layout">
+        <div id="nav">nav goes here</div>
+        <div id="sidebar">sidebar goes here</div>
+        <div id="containt">containt goes here</div>
+    </div>
+
+</body>
+
+</html>
