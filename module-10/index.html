@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BWS || TASK 10 || LOKESH GHOSH</title>
+    <style>
+        body{
+            background-color: #D58BDD;
+        }
+        h1{
+            text-align: center;
+            text-decoration: underline;
+            font-family: cursive;
+        }
+        button{
+            display: block;
+            margin: auto;
+            border: 2px solid #251B37;
+            height: 70px;
+            width: 150px;
+            font-family: cursive;
+            font-size: x-large;
+            font-weight: bolder;
+            background-color: #FF99D7;
+        }
+
+        img{
+                width: 400px;
+                height: auto;
+                box-shadow: 10px 10px 5px black;
+                border: 2px solid #372948;
+                display: block;
+                margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <button>Generate Character</button>
+    <h1 class="name"></h1>
+    <img src="" class="character-img" alt="">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("button").on("click",function(){
+                const randomNumber = Math.ceil(Math.random() * 88)
+                $.get(`https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/id/${randomNumber}.json`,function(data){
+                    console.log(data['name'])
+                    $("h1.name").text(data['name'])
+                    $(".character-img").attr("src",data['image'])
+                })
+            })
+        })
+
+    </script>
+
+
+
+</body>
+</html>
