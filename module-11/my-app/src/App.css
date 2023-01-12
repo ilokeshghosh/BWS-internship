@@ -1,0 +1,53 @@
+
+.App {
+  text-align: center;
+  
+}
+
+.App-header {
+  background-color: #D58BDD;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: rgb(10, 10, 10);
+}
+
+.btn {
+ 
+
+  display: block;
+  margin: auto;
+  border: 2px solid #251B37;
+  height: 70px;
+  width: 150px;
+  font-family: cursive;
+  font-size: x-large;
+  font-weight: bolder;
+  background-color: #FF99D7;
+}
+
+
+h1{
+  text-align: center;
+  text-decoration: underline;
+  font-family: cursive;
+}
+
+img {
+  
+  width: 400px;
+  height: auto;
+  box-shadow: 10px 10px 5px black;
+  border: 2px solid #372948;
+  display: block;
+  margin: auto;
+}
+
+.content {
+  position: relative;
+  z-index: 100;
+}
+
