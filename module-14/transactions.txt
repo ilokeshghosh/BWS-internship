@@ -1,0 +1,2 @@
+Deposited 10.0 			bal: 1010.0
+Withdrew 10.0 			bal: 1000.0
